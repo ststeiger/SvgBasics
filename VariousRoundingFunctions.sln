@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VariousRoundingFunctions", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvgBasics", "SvgBasics\SvgBasics.csproj", "{D240CE5E-7881-489E-9493-4067E188DEF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeInterface", "ExchangeInterface\ExchangeInterface.csproj", "{C23A6ECB-C945-456D-B0E8-1AB349550C03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D240CE5E-7881-489E-9493-4067E188DEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D240CE5E-7881-489E-9493-4067E188DEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D240CE5E-7881-489E-9493-4067E188DEF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C23A6ECB-C945-456D-B0E8-1AB349550C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23A6ECB-C945-456D-B0E8-1AB349550C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23A6ECB-C945-456D-B0E8-1AB349550C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23A6ECB-C945-456D-B0E8-1AB349550C03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
