@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+    <title>Test</title>
+</head>
+<body>
+    <object id="sv" data="Switzerland_regions.svg" type="image/svg+xml">
+        <!-- <img src="yourfallback.jpg" alt="SVG fallback image" /> -->
+    </object>
+
+    <canvas id="myCanvas" width="1051" height="680" style="border:1px solid #000000;"></canvas>
+
+    <script type="text/javascript">
+        function svgMod() {
+            var S = document.getElementById("sv")
+            var SD = S.getSVGDocument();
+            // console.log(SD);
+            
+            var circle1 = SD.getElementById("GR");
+            // console.log(circle1);
+            circle1.style.fill = "grey";
+
+
+            var circle1 = SD.getElementById("AG");
+            circle1.style.fill = "green";
+
+            var circle1 = SD.getElementById("ZG");
+            circle1.style.fill = "blue";
+
+            var circle1 = SD.getElementById("TI");
+            circle1.style.fill = "red";
+
+            var circle1 = SD.getElementById("tspan6073");
+            circle1.style.fill = "red";
+            // circle1.innerHTML = "Graubünden"; // Not working in IE
+            circle1.textContent = "Graubünden";
+
+            var circle1 = SD.getElementById("tspan6069");
+            circle1.textContent = "Tessin";
+
+            var circle1 = SD.getElementById("tspanItaly");
+            circle1.textContent = "I T A L I E N";
+
+            var circle1 = SD.getElementById("tspanGermany");
+            circle1.textContent = "D E U T S C H L A N D";
+
+            var circle1 = SD.getElementById("tspanAustria");
+            circle1.textContent = "Ö S T E R R E I C H";
+
+            var circle1 = SD.getElementById("tspanLakeGeneva");
+            circle1.textContent = "Genfersee";
+
+            var circle1 = SD.getElementById("tspanWallis");
+            circle1.textContent = "Wallis";
+
+            var circle1 = SD.getElementById("tspanSwitzerland");
+            circle1.textContent = "Schweiz";
+
+            
+            //var html = S.contentDocument.textContent;
+            //var html = S.contentDocument.rootElement.outerHTML;
+            //console.log(html);
+            var markup = (new XMLSerializer()).serializeToString(S.contentDocument.rootElement);
+            // console.log(markup);
+
+            
+            // http://techslides.com/save-svg-as-an-image/
+
+            var imgsrc = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(markup)));
+            var DOM_img = document.createElement("img");
+            //DOM_img.src = "http://cdn.sstatic.net/stackoverflow/img/sprites.png?v=3c6263c3453b";
+            DOM_img.src = imgsrc;
+            document.body.appendChild(DOM_img);
+
+
+
+            var layer = SD.querySelector("#layer1"); // Text
+            var parent = layer.parentNode;
+            parent.removeChild(layer);
+
+            // layer6 // Cantons
+            // layer2 // Frontier
+            // layer5 // Background
+
+            //var rectangle = SD.querySelector("#layer4"); // Rivers
+            //var parent = rectangle.parentNode;
+            //parent.removeChild(rectangle);
+
+            //var rectangle = SD.querySelector("#layer3"); // Seen
+            //var parent = rectangle.parentNode;
+            //parent.removeChild(rectangle);
+
+
+            // var matches = document.querySelectorAll("div.note, div.alert");
+
+
+            // var xxx = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+          
+
+            // var str = "äöüÄÖÜçéèñ";
+            // var b64 = btoa(unescape(encodeURIComponent(str)))
+            // console.log(b64);
+
+            // var str2 = decodeURIComponent(escape(window.atob(b64)));
+            // console.log(str2);
+
+
+            var canvas = document.querySelector("#myCanvas");
+            var context = canvas.getContext("2d");
+            
+            
+            var image = new Image();
+            image.src = imgsrc;
+            image.origin = document.domain;
+
+            //image.setAttribute('crossOrigin', 'Anonymous');
+            image.setAttribute('crossOrigin', 'anonymous');
+
+            image.onload = function () {
+                context.drawImage(image, 0, 0);
+
+                var canvasdata = canvas.toDataURL("image/png");
+
+
+                var DOM_img = document.createElement("img");
+                //DOM_img.src = "http://cdn.sstatic.net/stackoverflow/img/sprites.png?v=3c6263c3453b";
+                DOM_img.src = canvasdata;
+                document.body.appendChild(DOM_img);
+
+                // var pngimg = '<img src="' + canvasdata + '">';
+                // d3.select("#pngdataurl").html(pngimg);
+
+
+                var a = document.createElement("a");
+                a.download = "sample.png";
+                a.href = canvasdata;
+                document.body.appendChild(a);
+                a.click();
+
+                //alert(canvasdata);
+            };
+            
+        }
+    </script>
+
+    <input type="button" onclick="svgMod();" value="Modify SVG" />
+
+</body>
+</html>
