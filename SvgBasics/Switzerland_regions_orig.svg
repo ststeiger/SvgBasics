@@ -21,8 +21,7 @@
    inkscape:export-filename="C:\Users\sertmann\Pictures\Wikitravel\Sources\Switzerland_regions.png"
    inkscape:export-xdpi="134"
    inkscape:export-ydpi="134">
-  <defs
-     id="defs4">
+  <defs id="defs4">
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
        inkscape:vp_x="0 : 372.04724 : 1"
@@ -30,17 +29,9 @@
        inkscape:vp_z="1052.3622 : 372.04724 : 1"
        inkscape:persp3d-origin="526.18109 : 248.03149 : 1"
        id="perspective205" />
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient4111">
-      <stop
-         style="stop-color:#e2e3db;stop-opacity:1;"
-         offset="0"
-         id="stop4113" />
-      <stop
-         style="stop-color:#e2e3db;stop-opacity:0;"
-         offset="1"
-         id="stop4115" />
+    <linearGradient inkscape:collect="always" id="linearGradient4111">
+      <stop style="stop-color:#e2e3db;stop-opacity:1;" offset="0" id="stop4113" />
+      <stop style="stop-color:#e2e3db;stop-opacity:0;" offset="1" id="stop4115" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
