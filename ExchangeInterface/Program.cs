@@ -186,15 +186,26 @@ namespace ExchangeInterface
                 xdoc.DocumentElement.RemoveAttribute("xmlns:" + strNamespaceName);
             } // Next strNamespaceName
 
+            
+            string att = xdoc.DocumentElement.GetAttribute("xmlns:svg");
             xdoc.DocumentElement.RemoveAttribute("xmlns:svg");
-            xdoc.DocumentElement.SetAttribute("xmlns:svg", "http://www.w3.org/2000/svg");
+            if(!string.IsNullOrEmpty(att))
+                xdoc.DocumentElement.SetAttribute("xmlns:svg", att);
 
+            att = null;
+            att = xdoc.DocumentElement.GetAttribute("xmlns:xlink");
             xdoc.DocumentElement.RemoveAttribute("xmlns:xlink");
-            xdoc.DocumentElement.SetAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+            if (!string.IsNullOrEmpty(att))
+                xdoc.DocumentElement.SetAttribute("xmlns:xlink", att);
 
             // Needed for preserving inkscape:label
+            att = null;
+            att = xdoc.DocumentElement.GetAttribute("xmlns:inkscape");
             xdoc.DocumentElement.RemoveAttribute("xmlns:inkscape");
-            xdoc.DocumentElement.SetAttribute("xmlns:inkscape", "http://www.inkscape.org/namespaces/inkscape");
+            if (!string.IsNullOrEmpty(att))
+                xdoc.DocumentElement.SetAttribute("xmlns:inkscape", att);
+
+            att = null;
         } // End Sub RemoveNamespaces
 
 
