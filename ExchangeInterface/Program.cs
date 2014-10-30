@@ -33,77 +33,12 @@ namespace ExchangeInterface
         } // End Sub Main
 
 
-        public class XmlTextWriterIndentedStandaloneNo : System.Xml.XmlTextWriter
-        {
-
-            public bool bStandAlone = false;
-            public bool bWriteStartDocument = true;
-            public bool bOmitEncodingAndStandAlone = true;
-
-
-            public XmlTextWriterIndentedStandaloneNo(System.IO.TextWriter w)
-                : base(w)
-            {
-                Formatting = System.Xml.Formatting.Indented;
-            } // End Constructor 
-
-
-            public XmlTextWriterIndentedStandaloneNo(string strFileName, System.Text.Encoding teEncoding)
-                : base(strFileName, teEncoding)
-            {
-                Formatting = System.Xml.Formatting.Indented;
-            } // End Constructor 
-
-
-            public XmlTextWriterIndentedStandaloneNo(System.IO.Stream w, System.Text.Encoding teEncoding)
-                : base(w, teEncoding)
-            {
-                Formatting = System.Xml.Formatting.Indented;
-            } // End Constructor 
-
-
-            public override void WriteStartDocument(bool standalone)
-            {
-                if (bWriteStartDocument)
-                {
-                    if (bOmitEncodingAndStandAlone)
-                    {
-                        this.WriteProcessingInstruction("xml", "version='1.0'");
-                        return;
-                    } // End if (bOmitEncodingAndStandAlone) 
-
-                    base.WriteStartDocument(bStandAlone);
-                }
-
-            } // End Sub WriteStartDocument 
-
-
-            public override void WriteStartDocument()
-            {
-                // Suppress by ommitting WriteStartDocument
-                if (bWriteStartDocument)
-                {
-
-                    if (bOmitEncodingAndStandAlone)
-                    {
-                        this.WriteProcessingInstruction("xml", "version='1.0'");
-                        return;
-                    } // End if (bOmitEncodingAndStandAlone)
-
-                    base.WriteStartDocument(bStandAlone);
-                    // False: Standalone="no"
-                } // End if (bWriteStartDocument)
-
-            } // End Sub WriteStartDocument 
-
-
-        } // End Class XmlTextWriterIndentedStandaloneNo 
-
-
         public static void CleanSVG()
         {
-            string strInputFile = @"D:\Stefan.Steiger\Documents\visual studio 2013\Projects\VariousRoundingFunctions\SvgBasics\Switzerland_regions_orig.svg";
-
+            string strInputFile = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            strInputFile = System.IO.Path.Combine(strInputFile, "../../../SvgBasics/Switzerland_regions_orig.svg");
+            strInputFile = System.IO.Path.GetFullPath(strInputFile);
+            
             System.Xml.XmlDocument xdoc = new System.Xml.XmlDocument();
             xdoc.XmlResolver = null;
             //xdoc.Load(strInputFile);
@@ -309,6 +244,74 @@ namespace ExchangeInterface
             } // Next thisElement
 
         } // End Sub RemoveNodes 
+
+
+
+        public class XmlTextWriterIndentedStandaloneNo : System.Xml.XmlTextWriter
+        {
+
+            public bool bStandAlone = false;
+            public bool bWriteStartDocument = true;
+            public bool bOmitEncodingAndStandAlone = true;
+
+
+            public XmlTextWriterIndentedStandaloneNo(System.IO.TextWriter w)
+                : base(w)
+            {
+                Formatting = System.Xml.Formatting.Indented;
+            } // End Constructor 
+
+
+            public XmlTextWriterIndentedStandaloneNo(string strFileName, System.Text.Encoding teEncoding)
+                : base(strFileName, teEncoding)
+            {
+                Formatting = System.Xml.Formatting.Indented;
+            } // End Constructor 
+
+
+            public XmlTextWriterIndentedStandaloneNo(System.IO.Stream w, System.Text.Encoding teEncoding)
+                : base(w, teEncoding)
+            {
+                Formatting = System.Xml.Formatting.Indented;
+            } // End Constructor 
+
+
+            public override void WriteStartDocument(bool standalone)
+            {
+                if (bWriteStartDocument)
+                {
+                    if (bOmitEncodingAndStandAlone)
+                    {
+                        this.WriteProcessingInstruction("xml", "version='1.0'");
+                        return;
+                    } // End if (bOmitEncodingAndStandAlone) 
+
+                    base.WriteStartDocument(bStandAlone);
+                }
+
+            } // End Sub WriteStartDocument 
+
+
+            public override void WriteStartDocument()
+            {
+                // Suppress by ommitting WriteStartDocument
+                if (bWriteStartDocument)
+                {
+
+                    if (bOmitEncodingAndStandAlone)
+                    {
+                        this.WriteProcessingInstruction("xml", "version='1.0'");
+                        return;
+                    } // End if (bOmitEncodingAndStandAlone)
+
+                    base.WriteStartDocument(bStandAlone);
+                    // False: Standalone="no"
+                } // End if (bWriteStartDocument)
+
+            } // End Sub WriteStartDocument 
+
+
+        } // End Class XmlTextWriterIndentedStandaloneNo 
 
 
         static void RunExchange()
