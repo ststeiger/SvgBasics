@@ -40,24 +40,45 @@ namespace ExchangeInterface
             strInputFile = System.IO.Path.GetFullPath(strInputFile);
             
             System.Xml.XmlDocument xdoc = new System.Xml.XmlDocument();
-            xdoc.XmlResolver = null;
+            xdoc.XmlResolver = null; // hmmm - lol ?...
             //xdoc.Load(strInputFile);
 
             // http://stackoverflow.com/questions/1874132/how-to-remove-all-comment-tags-from-xmldocument
             System.Xml.XmlReaderSettings settings = new System.Xml.XmlReaderSettings();
             settings.IgnoreComments = true;
-            settings.XmlResolver = null;
+            settings.XmlResolver = null; // hmmm - lol ?...
             using (System.Xml.XmlReader reader = System.Xml.XmlReader.Create(strInputFile, settings))
             {
                 xdoc.Load(reader);
                 reader.Close();
             } // End Using reader
 
+
+            //RemoveComments(xdoc);
+
             // http://stackoverflow.com/questions/561822/xpath-on-an-xml-document-with-namespace
             // var xo = xdoc.SelectNodes(@"//*[namespace-uri() = ""http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd""][local-name() = ""nodetypes""]", names);
             // var xo = xdoc.SelectNodes(@"//sodipodi:*", names);
 
-            //RemoveComments(xdoc);
+
+            // System.Xml.XmlElement xeSelectedElement = xdoc.GetElementById("tspan6069"); // Pffffff, no fallback when no dtd - soooo lame - of course much better to just return NULL ...
+            System.Xml.XmlNode xnSelectedNode = xdoc.SelectSingleNode("//*[@id='tspan6069']"); // There - wouldn't be that difficult, wouldn't it ? 
+            xnSelectedNode.InnerText = "Cappucino";
+
+            // Pfff, this "parser", which actually uses a too simple regex, is pure CRAP
+            // CSS parsing is trivial ? But only if you're doing it wrong...
+            LaTrompa.WebCrap.CssParser cpr = new LaTrompa.WebCrap.CssParser(xnSelectedNode.Attributes["style"].Value);
+            LaTrompa.WebCrap.StyleClass InlineStyle = cpr.InlineStyles;
+            InlineStyle.Attributes["fill"] = "hotpink";
+
+            string newInlineStyle = InlineStyle.ToString();
+            xnSelectedNode.Attributes["style"].Value = newInlineStyle;
+
+            //System.Xml.XmlElement xeSelectedElement = (System.Xml.XmlElement)xnSelectedNode;
+            //xeSelectedElement.SetAttribute("style", "test");
+
+            //System.Xml.XmlAttribute style = (System.Xml.XmlAttribute)xdoc.SelectSingleNode("//*[@id='tspan6069']/@style");
+            //Console.WriteLine(style);
 
 
             System.Collections.Generic.List<string> ls = new System.Collections.Generic.List<string>();
@@ -81,9 +102,10 @@ namespace ExchangeInterface
             ls.Add("inkscape:groupmode");
             ls.Add("inkscape:version");
             ls.Add("inkscape:output_extension");
-            //ls.Add("inkscape:label");
+            //ls.Add("inkscape:label"); // Wanna keep that
 
-            ls.Add("xml:space"); // xml:space="preserve" 
+            // xml:space="preserve" 
+            ls.Add("xml:space"); // Fix inkscape insanity
             
             RemoveAttributes(xdoc, ls);
 
