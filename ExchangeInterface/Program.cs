@@ -353,9 +353,6 @@ namespace ExchangeInterface
 
 
 
-
-
-
             // http://stackoverflow.com/questions/19623169/exchangeservicebinding-ews-exchange-web-service
             // http://msdn.microsoft.com/en-us/library/office/exchangewebservices.exchangeservicebinding(v=exchg.150).aspx
             // Set up the binding for Exchange impersonation.
@@ -378,7 +375,7 @@ namespace ExchangeInterface
             FindItemResponseType response = binding.FindItem(request);
         } // End Sub RunExchange 
 
-
+        
         // http://blogs.mybridgepoint.com/checking-exchange-2010-email-using-the-exchange-web-service/
         public static BaseItemIdType[] GetInboxItemIDs(ExchangeServiceBinding esb)
         {
@@ -425,18 +422,19 @@ namespace ExchangeInterface
                     foreach (ItemType messagetype in RealItemsTypeArray.Items)
                     {
                         msgIDArray[0] = messagetype.ItemId;
-                    }
-
+                    } // Next messagetype
 
                     //foreach (MessageType messagetype in RealItemsTypeArray.Items)
                     //{
                     //    msgIDArray[0] = messagetype.ItemId;
-                    //}
-                }
-            }
+                    //} // Next messagetype 
+
+                } // End if (ResponseMessageType.ResponseClass == ResponseClassType.Success)
+
+            } // Next rmt
 
             return msgIDArray;
-        }
+        } // End Function GetInboxItemIDs
 
 
         public static ItemType[] GetMessages(ExchangeServiceBinding esb, BaseItemIdType[] msgIDArray)
@@ -451,7 +449,7 @@ namespace ExchangeInterface
             GetItemResponseType responsetype = esb.GetItem(git);
 
             return ((ItemInfoResponseMessageType)((ArrayOfResponseMessagesType)responsetype.ResponseMessages).Items[0]).Items.Items;
-        }
+        } // End Function GetMessages
 
 
         public static ExchangeServiceBinding GetExchangeServiceBindingObject(string user, string password, string domain, string exchangehost)
@@ -461,7 +459,7 @@ namespace ExchangeInterface
             esb.Url = "https://" + exchangehost + "/EWS/Exchange.asmx";
             
             return esb;
-        }
+        } // End Function GetExchangeServiceBindingObject
 
         
         public static string GetLastestBody()
@@ -471,7 +469,7 @@ namespace ExchangeInterface
             BaseItemIdType[] ids = GetInboxItemIDs(esb);
             ItemType[] messages = GetMessages(esb, ids);
             return messages[0].Body.Value;
-        }
+        } // End Function GetLastestBody
         
 
     } // End Class Program 
