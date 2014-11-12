@@ -118,8 +118,15 @@
 
         }
 
-        
 
+        // http://www.the-art-of-web.com/search-highlight-demo.html
+        // http://jmrware.com/articles/2010/dynregexhl/DynamicRegexHighlighter.html
+        // https://github.com/jmrware/DynamicRegexHighlighter/blob/master/DynamicRegexHighlighter.js
+        // http://de.wikipedia.org/wiki/Benutzer%3aSchnark/js/highlight.js
+
+
+
+        // http://stackoverflow.com/questions/16524332/javascript-text-highlight-function
         var MyApp = {};
 
         MyApp.highlighter = (function () {
@@ -233,7 +240,79 @@
 
     </script>
 
+    <script type="text/javascript">
+        // <![CDATA[
 
+        /* 
+        $("#searchterm").keyup(function(e){
+            var q = $("#searchterm").val();
+            $.getJSON("http://en.wikipedia.org/w/api.php?callback=?",
+            {
+                srsearch: q,
+                action: "query",
+                list: "search",
+                format: "json"
+            },
+            function(data) {
+                $("#results").empty();
+                $("#results").append("Results for <b>" + q + "</b>");
+                $.each(data.query.search, function(i,item){
+                    $("#results").append("<div><a href='http://en.wikipedia.org/wiki/" + encodeURIComponent(item.title) + "'>" + item.title + "</a>" + item.snippet + "</div>");
+                });
+            });
+        });
+
+        //////////////
+
+        var runningRequest = false;
+var request;
+
+//Identify the typing action
+$('input#q').keyup(function(e){
+    e.preventDefault();
+    var $q = $(this); //get the letter
+
+    //if it's not a search term return false
+    if($q.val() == ''){
+        $('div#results').html('');
+        return false;
+    }
+
+    //Abort opened requests to speed it up
+    if(runningRequest){
+        request.abort();
+    }
+
+    runningRequest=true;
+    request = $.getJSON('search.php',{
+        q:$q.val()
+    },function(data){           
+        showResults(data,$q.val());
+        runningRequest=false;
+    });
+
+//Create HTML structure for the results and insert it on the result div
+function showResults(data, highlight){
+       var resultHtml = '';
+        $.each(data, function(i,item){
+            resultHtml+='<div class="result">';
+            resultHtml+='<h2><a href="#">'+item.title+'</a></h2>';
+            resultHtml+='<p>'+item.post.replace(highlight, '<span     class="highlight">'+highlight+'</span>')+'</p>';
+            resultHtml+='<a href="#" class="readMore">Read more..</a>'
+            resultHtml+='</div>';
+        });
+
+        $('div#results').html(resultHtml);
+    }
+
+    $('form').submit(function(e){
+        e.preventDefault();
+    });
+});
+
+
+        */
+        // ]]></script>
 
 
     <style type="text/css">
