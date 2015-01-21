@@ -51,10 +51,12 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="hilitorutf8.js" />
+    <Content Include="links.svg" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Suisse_cantons.svg" />
+    <Content Include="svg_ImageData.htm" />
     <Content Include="svg.htm" />
     <Content Include="Switzerland_regions.svg" />
     <Content Include="Switzerland_regions_orig.svg" />
