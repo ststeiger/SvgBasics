@@ -57,8 +57,26 @@ namespace VariousRoundingFunctions
         } // End Function RoundTowardZero
 
 
+        /*
+        // Won't work because of System.Web.
+        [Microsoft.SqlServer.Server.SqlFunction]
+        public static System.Data.SqlTypes.SqlDouble TInv(int degFreedom, double probability)
+        {
+            double result = 0.00;
+            try
+            {
+                result = 0; // fnInverseTDistribution(degFreedom, probability);
+                var someChart = new System.Web.UI.DataVisualization.Charting.Chart();
+                result = someChart.DataManipulator.Statistics.InverseTDistribution( probability, degFreedom);
 
-        
+            }
+            catch 
+            {
+                // throw; // Optionally throw/log/ignore/whatever
+            }
+            return result;
+        }
+        */
         
 
         // http://www.codeproject.com/KB/aspnet/ASPNET_20_Webconfig.aspx
