@@ -54,7 +54,9 @@
     <Content Include="links.svg" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\ajax_compat.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\reqwest.js" />
     <Content Include="Suisse_cantons.svg" />
     <Content Include="svg_ImageData.htm" />
     <Content Include="svg.htm" />
