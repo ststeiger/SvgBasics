@@ -1,5 +1,5 @@
 ﻿
-namespace ExchangeInterface
+namespace SvgXmlBeautifier
 {
 
 

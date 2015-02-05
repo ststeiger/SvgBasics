@@ -22,8 +22,7 @@ namespace ExchangeInterface
                 System.Windows.Forms.Application.Run(new Form1());
             } // End if (bShowWindow)
 
-            // ExchangeHelper.GetLastestBody();
-            Beautifier.CleanSVG();
+            ExchangeHelper.GetLastestBody();
         } // End Sub Main
 
 
