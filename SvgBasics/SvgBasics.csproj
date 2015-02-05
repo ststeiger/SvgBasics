@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="EmbeddedSVG.html" />
     <Content Include="hilitorutf8.js" />
     <Content Include="links.svg" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
