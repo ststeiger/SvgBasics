@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VariousRoundingFunctions", "VariousRoundingFunctions\VariousRoundingFunctions.csproj", "{7C84EF66-CA97-42D9-8196-E04740CFDAFC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvgBasics", "SvgBasics\SvgBasics.csproj", "{D240CE5E-7881-489E-9493-4067E188DEF6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeInterface", "ExchangeInterface\ExchangeInterface.csproj", "{C23A6ECB-C945-456D-B0E8-1AB349550C03}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7C84EF66-CA97-42D9-8196-E04740CFDAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C84EF66-CA97-42D9-8196-E04740CFDAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C84EF66-CA97-42D9-8196-E04740CFDAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C84EF66-CA97-42D9-8196-E04740CFDAFC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D240CE5E-7881-489E-9493-4067E188DEF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D240CE5E-7881-489E-9493-4067E188DEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D240CE5E-7881-489E-9493-4067E188DEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
