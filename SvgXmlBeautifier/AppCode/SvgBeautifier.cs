@@ -3,9 +3,172 @@ namespace SvgXmlBeautifier
 {
 
 
-    static class Beautifier
+    public class Beautifier
     {
 
+
+        // Beautifier.SetViewBox();
+        public static void SetViewBox()
+        {
+            string strInputFile = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            strInputFile = System.IO.Path.Combine(strInputFile, "../../SVG_Chair.svg");
+            strInputFile = System.IO.Path.GetFullPath(strInputFile);
+
+            System.Console.WriteLine(strInputFile);
+
+            string strInput = System.IO.File.ReadAllText(strInputFile);
+
+            string content = SetViewBox(strInput);
+            System.Console.WriteLine(content);
+        }
+
+
+        public static string SetViewBox(string strInput)
+        {
+            System.Xml.XmlDocument xdoc = new System.Xml.XmlDocument();
+            xdoc.XmlResolver = null; // hmmm - lol ?...
+
+            // http://stackoverflow.com/questions/1874132/how-to-remove-all-comment-tags-from-xmldocument
+            System.Xml.XmlReaderSettings settings = new System.Xml.XmlReaderSettings();
+            settings.IgnoreComments = true;
+            settings.XmlResolver = null; // hmmm - lol ?...
+
+            using (System.IO.StringReader strr = new System.IO.StringReader(strInput))
+            {
+                using (System.Xml.XmlReader reader = System.Xml.XmlReader.Create(strr, settings))
+                {
+                    xdoc.Load(reader);
+                    reader.Close();
+                } // End Using reader
+
+                strr.Close();
+            }
+            // string att = xdoc.DocumentElement.GetAttribute("viewBox");
+
+
+            string strViewBox = xdoc.DocumentElement.GetAttribute("viewBox");
+
+            if (!string.IsNullOrEmpty(strViewBox))
+                return strInput;
+
+            string width = xdoc.DocumentElement.GetAttribute("width");
+            string height = xdoc.DocumentElement.GetAttribute("height");
+
+            if (string.IsNullOrEmpty(width))
+                return strInput;
+
+            if (string.IsNullOrEmpty(height))
+                return strInput;
+
+
+            double dblWidth = 0;
+            double delHeight = 0;
+
+            if (   double.TryParse(width, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out dblWidth)
+                && double.TryParse(height, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out delHeight) 
+            )
+            {
+                strViewBox = string.Format("0 0 {0} {1}", (int) dblWidth, (int) delHeight);
+                xdoc.DocumentElement.SetAttribute("viewBox", strViewBox);
+            }
+
+            /*
+            System.Xml.XmlWriterSettings xwsSettings = new System.Xml.XmlWriterSettings();
+            xwsSettings.Indent = false;
+            xwsSettings.NewLineChars = string.Empty;
+            xwsSettings.Encoding = System.Text.Encoding.UTF8;
+            xwsSettings.OmitXmlDeclaration = true;
+
+            xwsSettings.Indent = true;
+            xwsSettings.NewLineChars = System.Environment.NewLine;
+            xwsSettings.OmitXmlDeclaration = false;
+
+            string strXmlText = null;
+
+            using (System.IO.StringWriter sw = new System.IO.StringWriter())
+            {
+                using (System.Xml.XmlWriter wr = System.Xml.XmlWriter.Create(sw, xwsSettings))
+                {
+                    xdoc.Save(wr);
+                    wr.Flush();
+                    wr.Close();
+                } // End using wr
+
+                strXmlText = sw.ToString();
+                sw.Close();
+            } // End Using sw
+            */ 
+
+            return xdoc.OuterXml;
+        }
+
+
+        public void SetViewBoxOnFile(string strInputFile)
+        {
+            System.Xml.XmlDocument xdoc = new System.Xml.XmlDocument();
+            xdoc.XmlResolver = null; // hmmm - lol ?...
+
+            // http://stackoverflow.com/questions/1874132/how-to-remove-all-comment-tags-from-xmldocument
+            System.Xml.XmlReaderSettings settings = new System.Xml.XmlReaderSettings();
+            settings.IgnoreComments = true;
+            settings.XmlResolver = null; // hmmm - lol ?...
+            using (System.Xml.XmlReader reader = System.Xml.XmlReader.Create(strInputFile, settings))
+            {
+                xdoc.Load(reader);
+                reader.Close();
+            } // End Using reader
+
+            // string att = xdoc.DocumentElement.GetAttribute("viewBox");
+
+
+            string strViewBox = xdoc.DocumentElement.GetAttribute("viewBox");
+
+            if (!string.IsNullOrEmpty(strViewBox))
+                return;
+
+            string width = xdoc.DocumentElement.GetAttribute("width");
+            string height = xdoc.DocumentElement.GetAttribute("height");
+
+            if (string.IsNullOrEmpty(width))
+                return;
+
+            if (string.IsNullOrEmpty(height))
+                return;
+
+
+            double dblWidth = 0;
+            double delHeight = 0;
+
+            if (double.TryParse(width, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out dblWidth)
+                && double.TryParse(height, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out delHeight)
+            )
+            {
+                strViewBox = string.Format("0 0 {0} {1}", (int)dblWidth, (int)delHeight);
+                xdoc.DocumentElement.SetAttribute("viewBox", strViewBox);
+            }
+
+
+            System.Xml.XmlWriterSettings xwsSettings = new System.Xml.XmlWriterSettings();
+            xwsSettings.Indent = false;
+            xwsSettings.NewLineChars = string.Empty;
+            xwsSettings.Encoding = System.Text.Encoding.UTF8;
+            xwsSettings.OmitXmlDeclaration = true;
+
+            xwsSettings.Indent = true;
+            xwsSettings.NewLineChars = System.Environment.NewLine;
+            xwsSettings.OmitXmlDeclaration = false;
+
+
+            using (System.Xml.XmlWriter wr = System.Xml.XmlWriter.Create(strInputFile, xwsSettings))
+            //using (System.Xml.XmlTextWriter wr = new System.Xml.XmlTextWriter(System.IO.Path.Combine(strBasePath, "Switzerland.svg"), System.Text.Encoding.UTF8))
+            {
+                //wr.Formatting = System.Xml.Formatting.None; // here's the trick !
+
+                xdoc.Save(wr);
+                wr.Flush();
+                wr.Close();
+            } // End Using wr
+        }
 
 
         public static void CleanSVG()
@@ -320,7 +483,7 @@ namespace SvgXmlBeautifier
         } // End Class XmlTextWriterIndentedStandaloneNo 
 
 
-    } // End Class Program 
+    } // End Class Beautifier 
 
 
-} // End Namespace ExchangeInterface 
+} // End Namespace SvgXmlBeautifier 

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeInterface", "Exchan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvgXmlBeautifier", "SvgXmlBeautifier\SvgXmlBeautifier.csproj", "{D4613CAA-8FBB-4E6F-A684-AC401849225A}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SvgXmlBeautifierVb", "SvgXmlBeautifierVb\SvgXmlBeautifierVb.vbproj", "{764AB479-4896-4E18-A701-8841FD1B7D9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D4613CAA-8FBB-4E6F-A684-AC401849225A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4613CAA-8FBB-4E6F-A684-AC401849225A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4613CAA-8FBB-4E6F-A684-AC401849225A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{764AB479-4896-4E18-A701-8841FD1B7D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{764AB479-4896-4E18-A701-8841FD1B7D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{764AB479-4896-4E18-A701-8841FD1B7D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{764AB479-4896-4E18-A701-8841FD1B7D9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

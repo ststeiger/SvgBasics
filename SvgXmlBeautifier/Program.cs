@@ -26,7 +26,8 @@ namespace SvgXmlBeautifier
                 Application.Run(new frmMain());
             }
 
-            Beautifier.CleanSVG();
+            Beautifier.SetViewBox();
+            // Beautifier.CleanSVG();
             System.Console.WriteLine(" --- Finished ! --- ");
             System.Threading.Thread.Sleep(1000);
         } // End Sub Main
