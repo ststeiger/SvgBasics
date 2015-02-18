@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvgBasics", "SvgBasics\SvgBasics.csproj", "{D240CE5E-7881-489E-9493-4067E188DEF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeInterface", "ExchangeInterface\ExchangeInterface.csproj", "{C23A6ECB-C945-456D-B0E8-1AB349550C03}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvgXmlBeautifier", "SvgXmlBeautifier\SvgXmlBeautifier.csproj", "{D4613CAA-8FBB-4E6F-A684-AC401849225A}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SvgXmlBeautifierVb", "SvgXmlBeautifierVb\SvgXmlBeautifierVb.vbproj", "{764AB479-4896-4E18-A701-8841FD1B7D9B}"
@@ -21,10 +19,6 @@ Global
 		{D240CE5E-7881-489E-9493-4067E188DEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D240CE5E-7881-489E-9493-4067E188DEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D240CE5E-7881-489E-9493-4067E188DEF6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C23A6ECB-C945-456D-B0E8-1AB349550C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C23A6ECB-C945-456D-B0E8-1AB349550C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C23A6ECB-C945-456D-B0E8-1AB349550C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C23A6ECB-C945-456D-B0E8-1AB349550C03}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D4613CAA-8FBB-4E6F-A684-AC401849225A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D4613CAA-8FBB-4E6F-A684-AC401849225A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4613CAA-8FBB-4E6F-A684-AC401849225A}.Release|Any CPU.ActiveCfg = Release|Any CPU
