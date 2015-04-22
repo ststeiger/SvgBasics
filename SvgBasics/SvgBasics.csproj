@@ -63,7 +63,7 @@
     <Content Include="svg.htm" />
     <Content Include="Switzerland_regions.svg" />
     <Content Include="Switzerland_regions_orig.svg" />
-    <Content Include="test.htm" />
+    <Content Include="TextHighlight.htm" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
